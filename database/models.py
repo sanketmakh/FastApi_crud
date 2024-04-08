@@ -16,11 +16,14 @@ class Student(BaseModel):
     age: int
     address: Address
 
+
+#In post/creation route  "id" should not be taken as input as it is created automatically by mongodb
 class StudentCreate(BaseModel):
     name: str
     age: int
     address: Address
 
+# As in patch route all datafields are not necessary
 class StudentUpdate(BaseModel):
     name: Optional[str] = None
     age: Optional[int] = None
