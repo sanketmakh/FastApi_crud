@@ -75,12 +75,14 @@ async def Fetch_student(student_id: str):
         id = ObjectId(student_id)
         student = collection.find_one({"_id": id})
         # student["id"]=str(student['_id'])
-        del student['_id']
         # print(student)
         if student:
+            del student['_id']
             return student
         else:
             raise HTTPException(status_code=404, detail="Student not found")
+    except InvalidId:
+        raise HTTPException(status_code=400, detail="Invalid student ID")
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Error occurred: {e}")
     
