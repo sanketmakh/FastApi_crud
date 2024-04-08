@@ -53,7 +53,7 @@ async def Update_student(student_id:str,updated_student:StudentUpdate):
         # address_dict = updated_student.address.dict()
 
         updated_student_dict = updated_student.model_dump(exclude_unset=True)
-
+        #If only partial address field is need to be updated
         if updated_student_dict.get('address'):
             if not updated_student_dict['address'].get('city'):
                 updated_student_dict['address']['city'] = existing_student['address']['city']
