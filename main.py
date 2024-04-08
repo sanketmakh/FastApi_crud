@@ -13,10 +13,6 @@ router=APIRouter()
 
 # get all student data route 
 @router.get("/students")
-async def List_students():
-    data = list(collection.find())  
-    return all_students(data)
-@router.get("/students")
 async def list_students(country: str = Query(None, description="Filter by country"), 
                         age: int = Query(None, description="Filter by minimum age")):
     query = {}
